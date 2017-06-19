@@ -1,7 +1,7 @@
 FROM debian
 
 RUN apt-get update && apt-get upgrade -y
-RUN apt-get install -y winbind libnss-winbind krb5-user libpam-krb5 samba
+RUN apt-get install -y winbind libnss-winbind samba
 
 ADD start.sh /start.sh
 
