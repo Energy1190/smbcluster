@@ -5,6 +5,6 @@ RUN apt-get install -y winbind libnss-winbind apt-get install krb5-user libpam-k
 
 ADD start.sh /start.sh
 
-EXPOSE 137/udp 138/udp 139 445 
+EXPOSE 88 137/udp 138/udp 139 445 
 
 CMD ["/start.sh"]
