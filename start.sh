@@ -104,6 +104,8 @@ net ads join -U ${USER}%${PASSWORD} -D $(echo ${DOMAIN[1]} | tr '[:upper:]' '[:l
 /etc/init.d/winbind restart
 
 if [ ! -z "${GROUP}" ] ; then
+    getent group
+    sleep 5
     IFS=':' read -ra RESULT <<< $(getent group "${GROUP}")
     echo "Group is:${RESULT[2]}"
     exit 0
