@@ -103,7 +103,7 @@ net ads join -U ${USER}%${PASSWORD} -D $(echo ${DOMAIN[1]} | tr '[:upper:]' '[:l
 /etc/init.d/samba restart
 /etc/init.d/winbind restart
 
-if [ -n "${GROUP}" ] ; then
+if [ ! -z "${GROUP}" ] ; then
     IFS=':' read -ra RESULT <<< $(getent group "${GROUP}")
     echo "Group is:${RESULT[2]}"
     exit 0
