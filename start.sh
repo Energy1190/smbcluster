@@ -107,6 +107,7 @@ if [ ! -z "${GROUP}" ] ; then
     getent group
     sleep 60
     IFS=':' read -ra RESULT <<< $(getent group "${GROUP}")
+    getent group
     echo "Name is:${GROUP}"
     echo "Group is:${RESULT[2]}"
     exit 0
