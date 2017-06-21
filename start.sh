@@ -105,7 +105,7 @@ net ads join -U ${USER}%${PASSWORD} -D $(echo ${DOMAIN[1]} | tr '[:upper:]' '[:l
 
 if [ ! -z "${GROUP}" ] ; then
     getent group
-    sleep 5
+    sleep 60
     IFS=':' read -ra RESULT <<< $(getent group "${GROUP}")
     echo "Name is:${GROUP}"
     echo "Group is:${RESULT[2]}"
