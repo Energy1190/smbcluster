@@ -20,6 +20,10 @@ case $key in
     DOMAIN-IP="$2"
     shift # past argument
     ;;
+    -g|--group)
+    GROUP="$2"
+    shift # past argument
+    ;;
 esac
 shift # past argument or value
 done
@@ -98,5 +102,11 @@ net ads join -U ${USER}%${PASSWORD} -D $(echo ${DOMAIN[1]} | tr '[:upper:]' '[:l
 
 /etc/init.d/samba restart
 /etc/init.d/winbind restart
+
+if [ -n ${GROUP} ] ; then
+    IFS=':' read -ra RESULT <<< $(getent group ${GROUP})
+    echo "Group is:${RESULT[2]}"
+    exit 0
+fi
 
 exec tail -f /var/log/samba/log.smbd
