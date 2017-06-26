@@ -104,12 +104,12 @@ net ads join -U ${USER}%${PASSWORD} -D $(echo ${DOMAIN[1]} | tr '[:upper:]' '[:l
 /etc/init.d/winbind restart
 
 if [ ! -z "${GROUP}" ] ; then
-    getent group
+    getent group "${GROUP}" > /dev/null 2>&1
     sleep 60
     IFS=':' read -ra RESULT <<< $(getent group "${GROUP}")
-    getent group
     echo "Name is:${GROUP}"
     echo "Group is:${RESULT[2]}"
+    echo ${RESULT[2]} > /data/GID/gid.num
     exit 0
 fi
 
